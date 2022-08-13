@@ -55,11 +55,6 @@ public class bookcontroller {
     @Log(name = "bookcontroller日志")
     @GetMapping("{currentPage}/{pageSize}")
     public R getPage(@PathVariable int currentPage, @PathVariable int pageSize, Book book) {
-        try{
-            int a =1/0;
-        }catch (Exception e){
-            throw new RuntimeException();
-        }
         IPage<Book> page = bookService.getPage(currentPage, pageSize, book);
         //如果当前页码值大于了总页码值，那么重新执行查询操作，使用最大页码值作为当前页码值
         if (currentPage > page.getPages()) {
